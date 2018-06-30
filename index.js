@@ -62,6 +62,23 @@ class PkgPyFuncs {
     return info
   }
 
+  selectOne() {
+    var functions = this.serverless.service.functions
+    const singlefunc = this.options.function
+
+    if (singlefunc in functions) {
+      var newfunctions = {}
+      newfunctions[singlefunc] = functions[singlefunc];
+      const info = _.map(newfunctions, (target) => {
+        return {
+          name: target.name,
+          includes: target.package.include
+        }
+      })
+      return info
+    }
+    throw new this.serverless.classes.Error(`[serverless-package-python-functions] Function name does not exist in serverless.yml`);
+  }
 
   installRequirements(buildPath,requirementsPath){
 
@@ -175,6 +192,13 @@ class PkgPyFuncs {
         .then( () => { Fse.ensureDirAsync(this.buildDir) })
         .then(this.setupDocker)
         .then(this.selectAll)
+        .map(this.makePackage),
+
+      'before:package:function:package': () => BbPromise.bind(this)
+        .then(this.fetchConfig)
+        .then(() => { Fse.ensureDirAsync(this.buildDir) })
+        .then(this.setupDocker)
+        .then(this.selectOne)
         .map(this.makePackage),
 
       'after:deploy:deploy': () => BbPromise.bind(this)

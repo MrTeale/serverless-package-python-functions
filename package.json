@@ -1,10 +1,10 @@
 {
   "name": "serverless-package-python-functions",
-  "version": "0.2.5",
+  "version": "0.2.6dev3",
   "description": "Serverless Framework plugin to package python functions and their requirements",
   "main": "index.js",
   "scripts": {},
-  "author": "Ubani Balogun",
+  "author": "MrTeale",
   "license": "ISC",
   "dependencies": {
     "bluebird": "^3.5.0",
@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ubaniabalogun/serverless-package-python-functions.git"
+    "url": "git+https://github.com/mrteale/serverless-package-python-functions.git"
   },
   "keywords": [
     "serverless",
@@ -35,7 +35,7 @@
     "requirements"
   ],
   "bugs": {
-    "url": "https://github.com/ubaniabalogun/serverless-package-python-functions/issues"
+    "url": "https://github.com/mrteale/serverless-package-python-functions/issues"
   },
-  "homepage": "https://github.com/ubaniabalogun/serverless-package-python-functions#readme"
+  "homepage": "https://github.com/mrteale/serverless-package-python-functions#readme"
 }
